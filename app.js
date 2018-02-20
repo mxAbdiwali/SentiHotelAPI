@@ -16,9 +16,10 @@ module.exports = app;
 //node_modules/ - all npm requried for app
 //app.js – initializes the app and glues everything together
 //db.js - set connection to the mysql server instance
-
-//glue everything
-//add midlleware for parsing responses
+var option = {
+    index: "index.html"
+}
+app.use('/',express.static('public', option));
 
 
 
