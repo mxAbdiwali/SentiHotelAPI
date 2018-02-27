@@ -1,0 +1,28 @@
+client id
+ZRD0Y34KHNMLUMEPF20SYV3T3Q5PVXVMEDWYOZI2HNWFLVRQ
+client secret
+DXEZJNYQOHR2CEDUEL54JVIOMI3MOK2ZAFXT2ORQAKJRTJLS
+
+//place search request
+https://api.foursquare.com/
+v2/venues/search?near=london&query=The Chesterfield Mayfair&limit=1&client_id=ZRD0Y34KHNMLUMEPF20SYV3T3Q5PVXVMEDWYOZI2HNWFLVRQ&client_secret=DXEZJNYQOHR2CEDUEL54JVIOMI3MOK2ZAFXT2ORQAKJRTJLS
+&categoryId=
+
+
+https://api.foursquare.com/v2/venues/search?near=london&query=Alhambra Hotel&limit=1&client_id=ZRD0Y34KHNMLUMEPF20SYV3T3Q5PVXVMEDWYOZI2HNWFLVRQ&client_secret=DXEZJNYQOHR2CEDUEL54JVIOMI3MOK2ZAFXT2ORQAKJRTJLS
+&v=20180221&categoryId=4bf58dd8d48988d1fa931735
+
+"prefix": "https://igx.4sqi.net/img/general/",
+"suffix": "/21673801_9usW_hZIGRt3jrCQv97uRUrpTPcwjX7hXI_2jq7gANs.jpg",
+
+                    "width": 540,
+                    "height": 720,
+
+"https://igx.4sqi.net/img/general/540x720/21673801_9usW_hZIGRt3jrCQv97uRUrpTPcwjX7hXI_2jq7gANs.jpg
+
+AIzaSyCbLaNh45XU4nHE7OJXABeqhaBqkFDW7E0
+
+51.52924171109761
+ -0.12371599040309895
+https://api.foursquare.com/v2/venues/trending?II=51.52924171109761,-0.12371599040309895
+

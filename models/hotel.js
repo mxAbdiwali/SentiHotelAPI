@@ -1,4 +1,4 @@
-//var connection = require('../db');
+var connection = require('../db');
 
 
 
@@ -18,14 +18,12 @@
 
 var Hotel ={
     //get all hotels in the db
-    getAllHotels:function(){
-        //connection.query("Select * from hotel",callback);
-        return {name:"abdiwali", age: 27};
+    getAllHotels:function(callback){
+        connection.query("Select *from hotel",callback);
     },
 
-    getHotelByID:function(){
-        //connection.query("Select * from hotel",callback);
-        return {name:"abdiwali", age: 27};
+    getHotelByID:function(id,callback){
+        connection.query("Select *from hotel where hotel.ID = "+id,callback);
     },
 };
 
