@@ -17,7 +17,7 @@ module.exports = app;
 //app.js – initializes the app and glues everything together
 //db.js - set connection to the mysql server instance
 var option = {
-    index: "index.html",
+    index: "index1.0.2.html",
     redirect: true
 }
 app.use('/',express.static('public', option));
