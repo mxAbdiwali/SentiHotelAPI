@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- ArcGIS css -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- boostrap script -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- ArcGIS API -->
+    <script src="https://js.arcgis.com/4.6/"></script>
+
+
+
+    <title>Document</title>
+    <style>
+        .card-group>.card-header {
+            display: table-caption;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- navbar navbar-light bg-faded -->
+                <nav class="navbar navbar-light">
+                    <div class="col-lg-6 d-flex flex-row  justified-content-start">
+                        <a class="navbar-brand" href="#">
+                            <!-- logo here img tag -->
+                            <span class="Display 1 text-primary"> SentiHotel</span>
+                        </a>
+                        <div class="col-md-8">
+                            <div class="input-group rounded border border-white search_input">
+                                <input type="text" class="form-control form-control-md" placeholder="e.g. ilford...">
+                                <button class="btn btn-primary btn-md" type="submit">Search</button>
+                                <!--
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text bg-transparent">
+                                        <a class="btn btn-md" href="#">
+                                          <i class="fa fa-search fa-2x"></i>
+                                            Search
+                                        </a>
+                                    </div>
+                                </span>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav" style="margin-right: 20px;">
+                        <button type="button" class="btn btn-success">Sign in</button>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-light bg-faded">
+                    <div class="col-sm-2 ">
+                        1
+                    </div>
+                    <div class="col-sm-2 ">
+                        1
+                    </div>
+                    <div class="col-sm-2">
+                        2
+                    </div>
+                    <div class="col-sm-4  justified-content-betwwen">
+                        <button type="button" class="btn btn-md rounded btn-outline-primary">Free Breakfast</button>
+                        <button type="button" class="btn btn-md rounded btn-outline-primary">Free Parking</button>
+                        <button type="button" class="btn btn-md rounded btn-outline-primary">Pet-allowed</button>
+                        <button type="button" class="btn btn-md rounded btn-outline-primary">Pool</button>
+                        <button type="button" class="btn btn-md rounded btn-outline-primary">Bar</button>
+                    </div>
+                    <button class="btn btn-link"><strong>MORE</strong></button>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row  no-gutters">
+            <!-- sidebar dispaly search result with pagination -->
+            <div class="col-lg-4">
+                <!-- hotel list -->
+                <div class="row no-gutters">
+                    <div class="card-group d-flex flex-column">
+                        <div class="card-header">
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item">
+                                    <span class="nav-link disabled" href="#">Sort by</span>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle selection" onclick="displaySelection()" data-toggle="dropdown" href="#" role="button"
+                                        aria-haspopup="true" aria-expanded="false">Best match</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Best match</a>
+                                        <a class="dropdown-item" href="#">Higest rating</a>
+                                        <a class="dropdown-item" href="#">Lowest price</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">0</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+                                    This content is a little bit longer.</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+                                    This card has even longer content than the first to show that equal height action.</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page navigation -->
+                <div class="row no-gutters bg-light justify-content-center d-flex mx-auto">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-lg">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- footer -->
+                <div class="row bg-success no-gutters">
+
+                </div>
+            </div>
+
+            <div class="col-lg-8 no-gutters">
+                <!-- map render by ArcGIS API -->
+                <div id="map" style="height: 100vh;"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "dojo/domReady!"
+        ], function (Map, MapView) {
+            var map = new Map({
+                basemap: "streets"
+            });
+            var view = new MapView({
+                container: "map",  // Reference to the scene div created in step 5
+                map: map,  // Reference to the map object created before the scene
+                zoom: 10.30,  // Sets zoom level based on level of detail (LOD)
+                center: [0.1278, 51.5074]  // Sets center point of view using longitude,latitude
+            });
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>
