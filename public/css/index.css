@@ -8,18 +8,27 @@ body{
     height: 600px;
 }
 
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 #map {
     padding: 0;
     margin: 0;
     height: 800px;
+  }
+  .img{
+      height: 90px;
+      width: 90px;
+      float: left;
   }
 
 
 
 
 
-.result_section{
-        height: 800px;
+.results{
         overflow-y: scroll;
         overflow-x:hidden;
 }
