@@ -5,153 +5,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- own style and bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <link rel="stylesheet" type="text/css" href="../lib/css/bootstrap.css">
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- awsome front css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ArcGIS css -->
     <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
-    <!-- loading require script -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- boostrap script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- ArcGIS API -->
     <script src="https://js.arcgis.com/4.6/"></script>
-    <title>SentiHotel</title>
+    <!-- custom script -->
+    <script src="js/index.js"></script>
+
+
+
+    <title>Document</title>
+    <style>
+        .card-group>.card-header {
+            display: table-caption;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="row">
-        <div class="container-fluid">
-            <div class="row navbar_section">
-                <!--fixted navbar with search inputed in the middle and dropdown link on the right -->
-                <nav class="navbar fixed-top navbar-light bg-light">
+        <div class="col-lg-12">
+            <!-- navbar navbar-light bg-faded -->
+            <nav class="navbar navbar-light">
+                <div class="col-lg-6 d-flex flex-row  justified-content-start">
                     <a class="navbar-brand" href="#">
                         <!-- logo here img tag -->
-                        SentiHotel
+                        <span class="Display 1 text-primary"> SentiHotel</span>
                     </a>
-                    <div class="col-lg-5">
-                        <div class="input-group">
-                            <input type="text" class="form-control form-control-lg" placeholder="e.g. ilford...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-lg btn-secondary" type="button">Go!</button>
-                            </span>
+                    <div class="col-md-8">
+                        <div class="input-group rounded border border-white search_input">
+                            <input type="text" class="form-control form-control-md" placeholder="e.g. ilford...">
+                            <button class="btn btn-primary btn-md" type="submit">Search</button>
+                            <!--
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text bg-transparent">
+                                        <a class="btn btn-md" href="#">
+                                          <i class="fa fa-search fa-2x"></i>
+                                            Search
+                                        </a>
+                                    </div>
+                                </span>
+                                -->
                         </div>
                     </div>
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                            </a>
+                </div>
+
+                <ul class="nav" style="margin-right: 20px;">
+                    <button type="button" class="btn btn-success">Sign in</button>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-light bg-faded">
+                <div class="col-sm-2 ">
+                    1
+                </div>
+                <div class="col-sm-2 ">
+                    1
+                </div>
+                <div class="col-sm-2">
+                    2
+                </div>
+                <div class="col-sm-4  justified-content-betwwen">
+                    <button type="button" class="btn btn-sm rounded btn-outline-primary">Location</button>
+                    <button type="button" class="btn btn-sm rounded btn-outline-primary">Food</button>
+                    <button type="button" class="btn btn-sm rounded btn-outline-primary">Value for money</button>
+                    <button type="button" class="btn btn-sm rounded btn-outline-primary">Staff</button>
+                    <button type="button" class="btn btn-sm rounded btn-outline-primary">Service</button>
+                </div>
+                <button class="btn btn-link">
+                    <strong>MORE</strong>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row  no-gutters">
+        <!-- sidebar dispaly search result with pagination -->
+        <div class="col-lg-4">
+            <div class="row mt-0 mr-0 bg-light justify-content-end">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <span class="nav-link disabled" href="#">Sort by</span>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle selection" onclick="displaySelection()" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Best match</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Best match</a>
+                            <a class="dropdown-item" href="#">Higest rating</a>
+                            <a class="dropdown-item" href="#">Lowest price</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">0</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row  ml-0 mr-0 no-gutters results">
+                <div id="result_container" class="list-group">
+                    <!-- result here -->
+                </div>
+                <!-- pagination -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
                         </li>
                     </ul>
                 </nav>
+
             </div>
-
-            <div class="row filter_section">
-
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-nav navbar-light bg-light">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 result_section">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <span class="nav-link disabled" href="#">Sort by</span>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle selection" onclick="displaySelection()" data-toggle="dropdown" href="#" role="button"
-                                aria-haspopup="true" aria-expanded="false">Best match</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Best match</a>
-                                <a class="dropdown-item" href="#">Higest rating</a>
-                                <a class="dropdown-item" href="#">Lowest price</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">0</a>
-                        </li>
-                    </ul>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
-                        </a>
-
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                    </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-lg justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" href="#">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-8 map_section">
-                    <div id="map"></div>
-                </div>
-            </div>
-
         </div>
+
+        <div class="col-lg-8 no-gutters">
+            <!-- map render by ArcGIS API -->
+            <div id="map" style="height: 100vh;"></div>
+        </div>
+
     </div>
 </body>
 
 </html>
-
-
-<script>
-    function displaySelection() {
-        $('.dropdown-menu a').click(function () {
-            $(this).parents('.nav-item').find('.selection').text($(this).text());
-        });
-    };
-
-
-</script>
