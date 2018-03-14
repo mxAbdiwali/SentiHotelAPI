@@ -13,6 +13,13 @@ require(["esri/Map", "esri/views/MapView", "dojo/domReady!"], function (Map, Map
     });
 });
 
+//close all popup windows
+$(document).ready(function () {
+    $(".close").bind("click", function () {
+        $(this).parent().slideToggle();
+    });
+});
+
 //load data
 $(document).ready(function () {
     $.get("http://localhost:3000/api/hotels", function (data) {
@@ -25,12 +32,18 @@ $(document).ready(function () {
 
 function renderResult(element) {
     var result_container = document.getElementById("result_container");
-    console.log(result_container);
     var link = document.createElement("a");
     link.setAttribute("class", "list-group-item list-group-item-action flex-column align-items-start");
+    link.setAttribute("type", "button");
+    link.setAttribute("data-toggle", "modal");
+    link.setAttribute("data-target", "#hotelexpand");
     link.setAttribute("data-hotel-id", element.ID);
-    link.addEventListener("click", function(){
-        console.log(this.data);
+    link.addEventListener("click", function () {
+        var popup = $('#hotelInfoPopup');
+        var hotelid = $(this).attr('data-hotel-id');
+        popup.children("#name").text(hotelid);
+        popup.slideDown();
+
     });
     result_container.appendChild(link);
 
@@ -46,12 +59,12 @@ function renderResult(element) {
     var img = document.createElement("img");
     img.setAttribute("class", "rounded")
     img.setAttribute("src", "img/placeholder.png");
-    img.setAttribute("height","90");
-    img.setAttribute("width","90");
+    img.setAttribute("height", "90");
+    img.setAttribute("width", "90");
     wrapper.appendChild(img);
 
     var left_wrapper = document.createElement("div");
-    left_wrapper.setAttribute("class","d-flex  flex-column w-100 ml-3");
+    left_wrapper.setAttribute("class", "d-flex  flex-column w-100 ml-3");
     wrapper.appendChild(left_wrapper);
 
     //left container elements
@@ -97,7 +110,7 @@ function renderResult(element) {
 
     var price = document.createElement("span");
     price.innerHTML = element.Minprice;
-    price.setAttribute("class","font-italic text-success");
+    price.setAttribute("class", "font-italic text-success");
     left_wrapper_div.appendChild(price);
 
 
@@ -105,7 +118,7 @@ function renderResult(element) {
     right_wrapper.setAttribute("class", "d-flex  flex-column w-100 float-right align-items-end alignjustify-content-center");
     wrapper.appendChild(right_wrapper);
     var nmReview = document.createElement("small");
-    nmReview.innerHTML = "Review : "+element.Nbreview;
+    nmReview.innerHTML = "Review : " + element.Nbreview;
     right_wrapper.appendChild(nmReview)
 }
 
