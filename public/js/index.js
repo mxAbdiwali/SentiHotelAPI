@@ -22,7 +22,7 @@ $(document).ready(function () {
     $('#category').children('button').each(function () {
         markerGroup.clearLayers();
         var category = $(this).attr('data-category');
-        $.get("http://localhost:3000/api/stats?id="+category, function (data) {
+        $.get("http://localhost:3000/api/stats?category="+category, function (data) {
             data.forEach((element) => {
                 renderMapPieByCategory(element);
             });
@@ -59,7 +59,7 @@ function renderMapPieByCategory(element) {
    // L.circleMarker(<LatLng> latlng, <CircleMarker options> options?)
    //Lat":51.5177,"Long":-0.143948
    var frequency = element.Frequency;
-   var category = element.Ctegory;
+   var category = element.Category;
    var result = element.Result;
    console.log(category);
    console.log(frequency);
