@@ -1,15 +1,10 @@
 var express = require('express');
 var app = express();
-var hotelroutes = require('./controller/hotel.route')
+var hotelroutes = require('./controller/hotel.route');
+var statsroutes = require('./controller/stats.route');
 const port = process.PORT || 3000;
 
-
-
-///////////
-
-//access app object 
-module.exports = app;
-
+ 
 //models/ – represents data, implements business logic and handles storage
 //controllers/ – defines your app routes and their logic
 //tests/ – tests everything which is in the other folders
@@ -27,9 +22,13 @@ app.use('/',express.static('public', option));
 //add all the route to the api
 //all the hotel request
 app.use('/api',hotelroutes)
+app.use('/api', statsroutes)
 
 //all the review request
 
 app.listen(port, function(){
     console.log("API running on port: "+port);
 });
+
+
+module.exports = app;

@@ -10,10 +10,10 @@ var connection = db.createConnection(
     }
 );
 
-///connection.connect(function(error){
-   //  if(error) throw error;
-     //console.log("Connected to mysql");
-//});
+connection.connect(function(error){
+    if(error) throw error;
+     console.log("Connected to mysql");
+});
 
 
 

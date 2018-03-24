@@ -1,6 +1,6 @@
 var app = require('express')
 const hotel = require('../models/hotel');
-var hotelroutes = app.Router()
+var hotelroutes = app.Router();
 
 
 
@@ -24,7 +24,7 @@ hotelroutes.get("/hotels", function(req,res){
 
 //how would to seperate the diffrent
 hotelroutes.get("/hotel?", function(req,res){
-    if((req.query.id != undefined || req.query.id != null ) && req.query.limit > 0){
+    if((req.query.id != undefined || req.query.limit != null ) && req.query.limit > 0){
         console.log(req.query.id);
         console.log(req.query.limit);
         hotel.getHotelByID(req.query.id, function(error,rows){

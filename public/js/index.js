@@ -1,17 +1,39 @@
+var map;
+var markerGroup;
 
 
+$(document).ready(function () {
+    map = L.map('map').setView([51.5074, -0.1278], 13);
+    markerGroup = L.layerGroup().addTo(map);
 
-require(["esri/Map", "esri/views/MapView", "dojo/domReady!"], function (Map, MapView) {
-    var map = new Map({
-        basemap: "streets"
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiYW1hcnJvIiwiYSI6ImNqZjJqcXRmdTAzNXoyd3A0ZmUwdWtpdGcifQ.61C6cl2MCXGbwvTWARNxbw'
+    }).addTo(map);
+
+
+    $.get("http://localhost:3000/api/stats", function (data) {
+        data.forEach(element => { renderMapPieAllCategory(element) });
     });
-    var view = new MapView({
-        container: "map",  // Reference to the scene div created in step 5
-        map: map,  // Reference to the map object created before the scene
-        zoom: 10.30,  // Sets zoom level based on level of detail (LOD)
-        center: [0.1278, 51.5074]  // Sets center point of view using longitude,latitude
+
+
+    $('#category').children('button').each(function () {
+        markerGroup.clearLayers();
+        var category = $(this).attr('data-category');
+        $.get("http://localhost:3000/api/stats?id="+category, function (data) {
+            data.forEach((element) => {
+                renderMapPieByCategory(element);
+            });
+        });
+
     });
+
+
+
 });
+
 
 //close all popup windows
 $(document).ready(function () {
@@ -30,6 +52,75 @@ $(document).ready(function () {
 });
 
 
+function renderCharPie(hotelID) {
+}
+
+function renderMapPieByCategory(element) {
+   // L.circleMarker(<LatLng> latlng, <CircleMarker options> options?)
+   //Lat":51.5177,"Long":-0.143948
+   var frequency = element.Frequency;
+   var category = element.Ctegory;
+   var result = element.Result;
+   console.log(category);
+   console.log(frequency);
+   var options ={
+        radius : 10 + (result*frequency)
+    }
+    console.log((result*frequency))
+    /*
+   var marker = L.circleMarker([element.Lat,element.Long], options);
+   markerGroup.addLayer(marker);
+    */
+}
+
+
+function renderMapPieAllCategory(element) {
+    if (element.Lat === null || element.Long === null) {
+        return;
+    }
+
+    var canvas = document.createElement('canvas');
+    canvas.setAttribute('id', element.HotelID);
+    canvas.setAttribute('heigth', 200);
+    canvas.setAttribute('weigth', 200);
+    var ctx = canvas.getContext('2d');
+
+
+    //create a pie chart
+    var options = {
+        animateRotate: true
+    };
+
+    data = {
+        datasets: [{ data: getArrayOfElement(element.Results) }],
+        labels: getArrayOfElement(element.Categories)
+    }
+
+    var html = new Chart(ctx, {
+        data: data,
+        type: 'polarArea',
+        options: options
+    });
+
+
+    var pieIcon = L.divIcon({
+        html: html,
+
+    })
+    //add the chart to the marker
+    L.marker([element.Lat, element.Long], { icon: pieIcon }).addTo(map);
+}
+
+function getArrayOfElement(string) {
+    var arr = [];
+    var list = string.split(',');
+    for (key in list) {
+        if (!isNaN(list[key])) arr.push(parseFloat(list[key]) * 100);
+        else arr.push(list[key]);
+    }
+    return arr;
+}
+
 function renderResult(element) {
     var result_container = document.getElementById("result_container");
     var link = document.createElement("a");
@@ -46,9 +137,6 @@ function renderResult(element) {
 
     });
     result_container.appendChild(link);
-
-
-
 
     //inner content
     var wrapper = document.createElement("div");
